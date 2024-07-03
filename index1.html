@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Click Example</title>
+  <style>
+    #video-background {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      cursor: pointer;
+    }
+
+    #content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <h1>Welcome</h1>
+    <p>Click the video to start</p>
+  </div>
+
+  <video id="video-background" muted>
+    <source src="v1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var video = document.getElementById("video-background");
+      var content = document.getElementById("content");
+
+      video.addEventListener('click', function() {
+        video.play();
+        content.style.display = "none";
+      });
+
+      video.addEventListener('ended', function() {
+        window.location.href = "index.html";
+      });
+    });
+  </script>
+</body>
+</html>
